@@ -96,6 +96,11 @@ matcher.match = function(input, word, option)
     return 0, {}
   end
 
+  -- Already completed
+  if #input == #word then
+    return 0, {}
+  end
+
   -- Check prefix matching.
   if option.disallow_prefix_unmatching then
     if not char.match(string.byte(input, 1), string.byte(word, 1)) then
