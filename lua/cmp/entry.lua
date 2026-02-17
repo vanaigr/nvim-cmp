@@ -352,16 +352,6 @@ entry._get_vim_item = function(self, suggest_offset)
     end
   end
 
-  -- remove duplicated string.
-  if self.offset ~= self.context.cursor.col then
-    for i = 1, #word do
-      if str.has_prefix(self.context.cursor_after_line, string.sub(word, i, #word)) then
-        word = string.sub(word, 1, i - 1)
-        break
-      end
-    end
-  end
-
   local cmp_opts = completion_item.cmp or {}
 
   local vim_item = {
